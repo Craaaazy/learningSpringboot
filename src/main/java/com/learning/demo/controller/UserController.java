@@ -6,10 +6,7 @@ import com.learning.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -37,31 +34,12 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping(value = "/login")
+
+    @RequestMapping(value = "/login")
     public String Login(){
 
         return "login";
 
-    }
-
-    @PostMapping(value = "/login")
-    public String Login(@ModelAttribute User user, BindingResult bindingResult){
-
-        if(bindingResult.hasErrors()){
-            System.out.println("error");
-            return "login";
-        }
-
-        User user_dao = userService.findByName(user.getName());
-
-        if(user.getName().equals(user_dao.getName()) && user.getPassword().equals(user_dao.getPassword())){
-
-
-
-            return "welcome";
-        }
-
-        return "login";
     }
 
 

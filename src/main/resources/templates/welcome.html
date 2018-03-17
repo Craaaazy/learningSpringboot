@@ -6,6 +6,11 @@
     <title>welcome</title>
 </head>
 <body>
-welcome!
+welcome [[${#httpServletRequest.remoteUser}]]!!
+
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="logout"/>
+
+</form>
 </body>
 </html>
