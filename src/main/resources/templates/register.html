@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+<form th:action="@{postRegisterUser}" method="post">
+    <table>
+        <tr>
+            <td>username:</td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <td>password:</td>
+            <td><input type="text"/></td>
+        </tr>
+        <tr>
+            <input type="submit" value="Sign Up"/>
+        </tr>
+    </table>
+
+</form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+
+<div th:if="${param.error}">
+    Invalid username or password.
+</div>
+
+<form th:action="@{/login}" method="post">
+
+    <table>
+        <tr>
+            <td>username:</td>
+            <td><input type="text" name="username"/></td>
+        </tr>
+        <tr>
+            <td>password:</td>
+            <td><input type="text" name="password"/></td>
+        </tr>
+        <tr>
+            <input type="submit" value="Login"/>
+        </tr>
+    </table>
+
+</form>
+</body>
+</html>
