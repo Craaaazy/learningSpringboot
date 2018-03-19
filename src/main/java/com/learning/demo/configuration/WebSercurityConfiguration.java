@@ -1,11 +1,9 @@
 package com.learning.demo.configuration;
 
-import com.learning.demo.model.User;
+import com.learning.demo.Utils.MyPasswordEncoder;
 import com.learning.demo.repositroy.UserReporsitory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -22,7 +20,7 @@ public class WebSercurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception{
         http.csrf().disable();
         http.authorizeRequests()
-                .antMatchers("/","/register").permitAll()
+                .antMatchers("/register").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -37,11 +35,12 @@ public class WebSercurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-
-        User user = userReporsitory.findByName();
-        auth.
+        auth.inMemoryAuthentication()
+                .passwordEncoder(new MyPasswordEncoder())
+                .withUser("user")
+                .password("")
+                .roles("User");
 
     }
-
 
 }

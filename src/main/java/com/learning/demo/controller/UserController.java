@@ -21,7 +21,6 @@ public class UserController {
 
 
     @PostMapping(value = "/register")
-    @ResponseBody
     public String postRegisterUser(@ModelAttribute User user, BindingResult bindingResult){
 
         if(bindingResult.hasErrors()){
@@ -34,12 +33,9 @@ public class UserController {
         return "login";
     }
 
-
-    @RequestMapping(value = "/login")
-    public String Login(){
-
-        return "login";
-
+    @GetMapping(value = "/")
+    public String getWel(){
+        return "welcome";
     }
 
 
