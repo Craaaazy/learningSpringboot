@@ -8,14 +8,12 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 public class WebSercurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    UserReporsitory userReporsitory;
+    MyPasswordEncoder myPasswordEncoder;
 
     protected void configure(HttpSecurity http) throws Exception{
         http.csrf().disable();
@@ -32,11 +30,10 @@ public class WebSercurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
 
-
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
         auth.inMemoryAuthentication()
-                .passwordEncoder(new MyPasswordEncoder())
+                .passwordEncoder(myPasswordEncoder)
                 .withUser("user")
                 .password("")
                 .roles("User");
