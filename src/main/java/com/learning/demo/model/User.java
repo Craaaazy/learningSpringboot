@@ -19,18 +19,18 @@ public class User{
 
 
     @NotNull
-    private String username;
+    private String name;
 
     @NotNull
     private String password;
 
 
     public String getName() {
-        return username;
+        return name;
     }
 
     public void setName(String name) {
-        this.username = name;
+        this.name = name;
     }
 
     public String getPassword() {

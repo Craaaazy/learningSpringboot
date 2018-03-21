@@ -3,21 +3,18 @@
       lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>welcome</title>
+    <title>News</title>
 </head>
-<body>
-welcome [[${#httpServletRequest.remoteUser}]]!!
+<!--<body>-->
+<!--<div th:object="${userdetail}">-->
+    <!--<p th:field="*{name}"></p>-->
+    <!--<p th:field="*{password}"></p>-->
+<!--</div>-->
+
+Hello [[${#httpServletRequest.remoteUser}]]!!
 
 <form th:action="@{/logout}" method="post">
     <input type="submit" value="logout"/>
-</form>
-
-<form th:action="@{/user/profile}" method="get">
-    <button type="submit">profile</button>
-</form>
-
-<form th:action="@{/shownews}" method="get">
-    <button type="submit">shownews</button>
 </form>
 
 </body>
