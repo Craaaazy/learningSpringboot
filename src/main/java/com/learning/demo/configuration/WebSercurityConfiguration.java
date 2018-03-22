@@ -20,28 +20,28 @@ public class WebSercurityConfiguration extends WebSecurityConfigurerAdapter {
 
     protected void configure(HttpSecurity http) throws Exception{
         http.csrf().disable();
-        http.authorizeRequests()
-                .antMatchers("/register").permitAll()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")//默认login
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll();
+//        http.authorizeRequests()
+//                .antMatchers("/register").permitAll()
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")//默认login
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .permitAll();
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-
-        auth.inMemoryAuthentication()
-                .passwordEncoder(myPasswordEncoder)
-                .withUser("user")
-                .password("password")
-                .roles("User");
-
-    }
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//
+//        auth.inMemoryAuthentication()
+//                .passwordEncoder(myPasswordEncoder)
+//                .withUser("user")
+//                .password("password")
+//                .roles("User");
+//
+//    }
 
     //不知道怎么从数据库验证
 //    @Override

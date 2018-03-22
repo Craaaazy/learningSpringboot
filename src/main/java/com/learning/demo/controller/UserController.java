@@ -55,10 +55,10 @@ public class UserController {
 //    @GetMapping(value = "/login")
 //    public String Login(/*ModelMap modelMap*/){
 //
-////        User newuser = new User();
-////        newuser.setName("user");
-////        newuser.setPassword("password");
-////        modelMap.addAttribute("newuser", newuser);
+//        User newuser = new User();
+//        newuser.setName("user");
+//        newuser.setPassword("password");
+//        ModelMap.addAttribute("newuser", newuser);
 //
 //        return "login";
 //    }

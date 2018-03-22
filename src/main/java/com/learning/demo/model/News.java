@@ -1,10 +1,9 @@
 package com.learning.demo.model;
 
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
@@ -12,36 +11,36 @@ import javax.validation.constraints.NotNull;
 public class News {
 
     @Id
-    @GeneratedValue()
-    private String Id;
+    @GeneratedValue(strategy = GenerationType.AUTO)    //auto increase
+    private int id;
 
     @NotNull
-    private String Title;
-    private String Content;
+    private String title;
+    private String content;
 
 
-
-    public String getId() {
-        return Id;
+    public int getId() {
+        return id;
     }
 
-    public void setId(String id) {
-        Id = id;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getTitle() {
-        return Title;
+        return title;
     }
 
     public void setTitle(String title) {
-        Title = title;
+        this.title = title;
     }
 
     public String getContent() {
-        return Content;
+        return content;
     }
 
     public void setContent(String content) {
-        Content = content;
+        this.content = content;
     }
+
 }
