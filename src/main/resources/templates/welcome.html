@@ -20,5 +20,13 @@ welcome [[${#httpServletRequest.remoteUser}]]!!
     <button type="submit">shownews</button>
 </form>
 
+<form th:action="@{/myNews}" method="get">
+    <button type="submit">myNews</button>
+</form>
+
+<form th:action="@{/myBlog}" method="get">
+    <button type="submit">myBlog</button>
+</form>
+
 </body>
 </html>

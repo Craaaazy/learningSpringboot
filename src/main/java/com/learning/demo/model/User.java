@@ -17,7 +17,6 @@ public class User{
     @GenericGenerator(name = "system-uuid", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
 
-
     @NotNull
     private String name;
 

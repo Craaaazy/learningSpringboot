@@ -87,4 +87,15 @@ public class UserController {
         return news;
     }
 
+
+    @GetMapping(value = "/myNews")
+    public String showdd(){
+        return "myNews";
+    }
+
+    @GetMapping(value = "/myBlog")
+    public String showBlog(){
+        return "myBlog";
+    }
+
 }

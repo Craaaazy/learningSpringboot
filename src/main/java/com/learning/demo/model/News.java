@@ -1,6 +1,8 @@
 package com.learning.demo.model;
 
 
+import org.hibernate.annotations.GenericGenerator;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,7 +13,11 @@ import javax.validation.constraints.NotNull;
 public class News {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)    //auto increase
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "org.hibernate.id.UUIDGenerator")
+    private String uid;
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @NotNull
@@ -43,4 +49,11 @@ public class News {
         this.content = content;
     }
 
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 }

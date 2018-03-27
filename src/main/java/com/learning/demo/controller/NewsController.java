@@ -18,6 +18,7 @@ public class NewsController {
     @Autowired
     NewsService newsService;
 
+
     @GetMapping(value = "/news")  //查询全部
     public List<News> show_news(){
         System.out.println("in get");
@@ -27,30 +28,26 @@ public class NewsController {
         return list;
     }
 
+
     @GetMapping(value = "/news/{id}")  //按id查询
-    public News show_news(@RequestParam("id") int id){
-        System.out.println("in get{id}");
+    public News show_news(@PathVariable int id){
+        System.out.println("in get{id}" + id);
 
-        News news = newsService.findNewsById(id);
-
-        return news;
+        return newsService.findNewsById(id);
     }
+
 
     @PostMapping(value = "/news") //新增一条
     public News add_news(@RequestParam("title") String title, @RequestParam("content") String content){
 
-        System.out.println("in post");
-        System.out.println("title --" + title);
-        System.out.println("content --" + content);
-
         News news = new News();
         news.setTitle(title);
         news.setContent(content);
-        newsService.save(news);
 
-        return news;
+        return newsService.save(news);
 
     }
+
 
     @DeleteMapping(value = "/news") //删除一条
     public void delete_news(@RequestParam("id") int id){
@@ -59,6 +56,7 @@ public class NewsController {
 
         newsService.deleteById(id);
     }
+
 
     @PutMapping(value = "/news") //修改一条
     public void put_news(){

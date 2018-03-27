@@ -7,6 +7,7 @@ $(document).ready(function () {
         datatype:'json',
 
         success: function(data) {
+
             console.log(data);
             $('#news_title').append(data.title);
             $('#news_content').append(data.content);
@@ -42,8 +43,6 @@ $('#submit').on(function () {
             console.log(data);
         }
     });
-
-
 
     return false;
 })
