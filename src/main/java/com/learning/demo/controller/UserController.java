@@ -94,8 +94,13 @@ public class UserController {
     }
 
     @GetMapping(value = "/myBlog")
-    public String showBlog(){
+    public String byBlog(){
         return "myBlog";
+    }
+
+    @GetMapping(value = "/showBlog")
+    public String showBlog(){
+        return "showBlog";
     }
 
 }

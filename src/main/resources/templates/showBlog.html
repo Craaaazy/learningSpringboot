@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout"
       lang="en">
 <head>
-<meta charset="UTF-8">
-<title>AllNews</title>
+    <meta charset="UTF-8">
+    <title>showBlog</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous"/>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -17,44 +17,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
-    <script type="text/javascript" th:src="@{/js/blog.js}"></script>
+    <script type="text/javascript" th:src="@{/js/showBlog.js}"></script>
 
 </head>
-
-
 <body>
 <center>
-
-    <p>---getBlog---</p>
-    <table id="myTable">
-        <thead>
-        <tr>
-            <th style="width: 20px">selected</th>
-            <th>title</th>
-            <th>content</th>
-            <th>options</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        </tbody>
-    </table>
-
-    <p>---postBlog---</p>
-
-    <div th:if="${param.error}">
-        Title must be unique!
-    </div>
-
-    <form th:action="@{/blog/s}" method="post">
-        <input id="b_title" style="width:300px" type="text" name="title"/>
-        <br/><br/>
-        <textarea id="b_content" style="width:500px; height: 300px;" name="content"></textarea>
-        <br/>
-        <input id="sumbit_btn" class="btn btn-primary" type="submit"/>
-    </form>
-
+    <p id="blog-title"></p>
+    <p id="blog-content"></p>
 </center>
-
 </body>
 </html>

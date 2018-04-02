@@ -8,5 +8,10 @@ import java.util.List;
 
 @Repository
 public interface BlogRepositroy extends JpaRepository<Blog,String>{
+
+    Blog save(Blog blog);
     List<Blog> findAll();
+    Blog findBlogByBtitle(String title);
+    void deleteByBtitle(String title);
+
 }

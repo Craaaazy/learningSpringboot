@@ -2,6 +2,8 @@ package com.learning.demo.model;
 
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,9 +17,18 @@ public class Blog {
     @GenericGenerator(name="system-uuid", strategy="org.hibernate.id.UUIDGenerator")
     private String id;
 
-    @NotNull
-    private String b_title;
-    private String b_content;
+    @NotNull(message = "Title can't be null!!")
+    @UniqueElements(message = "Title must be unique!!")
+    private String btitle; //变量名不能有_
+    private String bcontent;
+
+    public Blog(@NotNull String btitle, String bcontent) {
+        this.btitle = btitle;
+        this.bcontent = bcontent;
+    }
+
+    public Blog() {
+    }
 
     public String getId() {
         return id;
@@ -27,24 +38,19 @@ public class Blog {
         this.id = id;
     }
 
-    public String getB_title() {
-        return b_title;
+    public String getBtitle() {
+        return btitle;
     }
 
-    public void setB_title(String b_title) {
-        this.b_title = b_title;
+    public void setBtitle(String btitle) {
+        this.btitle = btitle;
     }
 
-    public String getB_content() {
-        return b_content;
+    public String getBcontent() {
+        return bcontent;
     }
 
-    public void setB_content(String b_content) {
-        this.b_content = b_content;
-    }
-
-    public Blog(@NotNull String b_title, String b_content) {
-        this.b_title = b_title;
-        this.b_content = b_content;
+    public void setBcontent(String bcontent) {
+        this.bcontent = bcontent;
     }
 }
