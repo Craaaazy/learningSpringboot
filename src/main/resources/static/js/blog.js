@@ -70,6 +70,8 @@ $(document).ready(function () {
 
 });
 
+
+
 function deleteBlog(_this) {
     var title = $(_this).parent().siblings().eq(1).text();
     console.log(title);
@@ -85,6 +87,7 @@ function showDetail(_this) {  //转跳详细页 不会实现 暂时放着
     var title = $(_this).parent().siblings().eq(1).text();
 
 }
+
 
 function putBlog(_this) {  //更新 暂时不会
 

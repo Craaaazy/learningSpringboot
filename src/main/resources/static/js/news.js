@@ -7,7 +7,6 @@ $(document).ready(function() {
                 console.log(data)
             }
         },
-
         column:[
             {data:'title'},
             {data:'content'}
