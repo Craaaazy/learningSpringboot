@@ -36,7 +36,7 @@ public class UserController {
         }
 
         userService.save(user);
-        System.out.println(user.getName() + "   " + user.getPassword());
+        System.out.println(user.getUsername() + "   " + user.getPassword());
 
         return "login";
     }
@@ -81,7 +81,7 @@ public class UserController {
 
         return news;
     }
-    
+
     @GetMapping(value = "/myBlog")
     public String byBlog(){
         return "myBlog";

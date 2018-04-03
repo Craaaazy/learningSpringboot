@@ -42,9 +42,8 @@ public class BlogController {
         return blogService.findBlogByBtitle(title);
     }
 
-    @PutMapping(value = "/s")
-    public void putOneBlog(@RequestBody Map<String, String> map){  //update by title
-
+    @PutMapping(value = "/s")                   //update by title
+    public void putOneBlog(@RequestBody Map<String, String> map){
         Blog blog = new Blog(map.get("title"), map.get("content"));
     }
 
