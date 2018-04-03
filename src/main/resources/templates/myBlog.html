@@ -26,7 +26,7 @@
 <center>
 
     <p>---getBlog---</p>
-    <table id="myTable">
+    <table id="myTable" class="display">
         <thead>
         <tr>
             <th style="width: 20px">selected</th>
@@ -41,10 +41,6 @@
     </table>
 
     <p>---postBlog---</p>
-
-    <div th:if="${param.error}">
-        Title must be unique!
-    </div>
 
     <form th:action="@{/blog/s}" method="post">
         <input id="b_title" style="width:300px" type="text" name="title"/>

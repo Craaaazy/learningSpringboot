@@ -4,6 +4,7 @@ package com.learning.demo.model;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.UniqueElements;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -17,8 +18,8 @@ public class Blog {
     @GenericGenerator(name="system-uuid", strategy="org.hibernate.id.UUIDGenerator")
     private String id;
 
-    @NotNull(message = "Title can't be null!!")
-    @UniqueElements(message = "Title must be unique!!")
+    @NotNull
+    @Column(name="btitle", unique=true)
     private String btitle; //变量名不能有_
     private String bcontent;
 

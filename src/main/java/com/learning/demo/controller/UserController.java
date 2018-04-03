@@ -4,19 +4,14 @@ import com.learning.demo.Service.NewsService;
 import com.learning.demo.Service.UserService;
 import com.learning.demo.model.News;
 import com.learning.demo.model.User;
-import com.learning.demo.repositroy.NewsReporsitory;
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import org.hibernate.annotations.GenericGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class UserController {
@@ -86,13 +81,7 @@ public class UserController {
 
         return news;
     }
-
-
-    @GetMapping(value = "/myNews")
-    public String showdd(){
-        return "myNews";
-    }
-
+    
     @GetMapping(value = "/myBlog")
     public String byBlog(){
         return "myBlog";

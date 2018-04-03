@@ -1,26 +1,5 @@
 $(function () {
 
-    $('#delete_btn').on('click', function () {
-
-        var title = $(this).parent("td").siliblings(1).text;
-        alert(title);
-
-        // $.ajax({
-        //     url: '/blog/s/' + title,
-        //     type: 'delete',
-        //
-        // })
-
-    });
-
-    $('#detail_btn').on('click',function () {
-
-        //getTitle.
-        //to showBlog Page.
-
-
-    })
-
     $('#sumbit_btn').on('click', function (event) {
         event.preventDefault();
 
@@ -52,6 +31,8 @@ $(document).ready(function () {
 
     $('#myTable').dataTable({
 
+        style: 'display',
+
         ajax: {
             url: '/blog/s',
             type: 'GET',
@@ -65,7 +46,7 @@ $(document).ready(function () {
                 searching:false,
                 ordering:false,
                 render: function (data, type, row, meta) {
-                    return '<center><input type="checkbox"></center>';
+                    return '<center><input style="width: auto" type="checkbox"></center>';
                 }
             },{
                 targets:1,
@@ -79,7 +60,8 @@ $(document).ready(function () {
                 ordering:false,
                 render: function (data, type, row, meta) {
                     return '<button type="button" class="btn btn-primary" onclick="deleteBlog(this)">delete</button>' +
-                        '&nbsp;<button type="button" class="btn btn-secondary" id="detail_btn">detail</button>';
+                        '&nbsp;<button type="button" class="btn btn-secondary" onclick="showDetail(this)">detail</button>' +
+                        '&nbsp;<button type="button" class="btn btn-danger" onclick="putBlog(this)">change</button>';
                 }
             }
         ],
@@ -90,13 +72,41 @@ $(document).ready(function () {
 
 function deleteBlog(_this) {
     var title = $(_this).parent().siblings().eq(1).text();
-    console.log(title)
+    console.log(title);
 
     $.ajax({
         url: '/blog/s/' + title,
         type: 'DELETE',
-
     })
+}
+
+
+function showDetail(_this) {  //转跳详细页 不会实现 暂时放着
+    var title = $(_this).parent().siblings().eq(1).text();
 
 }
 
+function putBlog(_this) {  //更新 暂时不会
+
+    // var data = new Object();
+    // data.title = $(_this).parent().siblings().eq(1).text();
+    // data.content = $(_this).parent().siblings().eq(2).text();
+    //
+    // $('#b_title').text(data.title);
+    // $('#b_content').text(data.content);
+    //
+    // $.ajax({
+    //     url:'/blog/s',
+    //     type:'PUT',
+    //     contentType: 'application/json',
+    //     dataType:'json',
+    //     data:JSON.stringify(data),
+    //
+    //     success:function (data) {
+    //         console.log(data);
+    //     },error:function (data) {
+    //         console.log(data);
+    //     }
+    //
+    // });
+}

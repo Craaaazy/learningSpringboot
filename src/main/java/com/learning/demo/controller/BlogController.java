@@ -22,7 +22,6 @@ public class BlogController {
 
     @GetMapping(value = "/s")          //findAll
     public List<Blog> getBlog(){
-
         return blogService.findAll();
     }
 
@@ -31,7 +30,6 @@ public class BlogController {
 
         Blog blog = new Blog(map.get("title"), map.get("content"));
         return blogService.save(blog);
-
     }
 
     @DeleteMapping(value = "/s/{title}")        //delete by title
@@ -44,5 +42,10 @@ public class BlogController {
         return blogService.findBlogByBtitle(title);
     }
 
+    @PutMapping(value = "/s")
+    public void putOneBlog(@RequestBody Map<String, String> map){  //update by title
+
+        Blog blog = new Blog(map.get("title"), map.get("content"));
+    }
 
 }
