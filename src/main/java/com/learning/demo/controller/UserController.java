@@ -1,17 +1,18 @@
 package com.learning.demo.controller;
 
 import com.learning.demo.Service.NewsService;
+import com.learning.demo.Service.RoleService;
 import com.learning.demo.Service.UserService;
 import com.learning.demo.model.News;
+import com.learning.demo.model.Role;
 import com.learning.demo.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @Controller
 public class UserController {
@@ -20,6 +21,11 @@ public class UserController {
     UserService userService;
     @Autowired
     NewsService newsService;
+    @Autowired
+    RoleService roleService;
+
+    Role role = null;
+    User user = null;
 
     @GetMapping(value = "/register")
     public String getRegisterUser(){
@@ -27,16 +33,20 @@ public class UserController {
     }
 
 
-    @PostMapping(value = "/register")
-    public String postRegisterUser(@ModelAttribute User user, BindingResult bindingResult){
+    @PostMapping(value = "/register") //Requestparam从form里面拿值
+    public String postRegisterUser(@RequestParam Map<String, String> map){
 
-        if(bindingResult.hasErrors()){
-            System.out.println("error");
-            return "register";
-        }
+        role = roleService.findByName(map.get("role"));
+
+        System.out.println(role);
+
+        user = new User();
+        user.setUsername(map.get("username"));
+        user.setPassword(map.get("password"));
+        user.setRole(role);
+        user.setEnable(true);
 
         userService.save(user);
-        System.out.println(user.getUsername() + "   " + user.getPassword());
 
         return "login";
     }
@@ -45,18 +55,6 @@ public class UserController {
     public String wel(){
         return "welcome";
     }
-
-
-//    @GetMapping(value = "/login")
-//    public String Login(/*ModelMap modelMap*/){
-//
-//        User newuser = new User();
-//        newuser.setName("user");
-//        newuser.setPassword("password");
-//        ModelMap.addAttribute("newuser", newuser);
-//
-//        return "login";
-//    }
 
     @GetMapping(value = "/user/profile")   //不知道springsecurity里登录的信息保存在什么里面
     public String user_profile(){

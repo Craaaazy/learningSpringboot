@@ -28,6 +28,8 @@ public class User{
     @NotNull
     private String password;
 
+    private Boolean enable;      //Spring Security必须要一个bool值放在select里  什么用暂时不知道
+
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
@@ -65,4 +67,11 @@ public class User{
     }
 
 
+    public Boolean getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Boolean enable) {
+        this.enable = enable;
+    }
 }

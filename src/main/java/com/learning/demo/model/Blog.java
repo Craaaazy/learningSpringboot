@@ -19,7 +19,7 @@ public class Blog {
     private String id;
 
     @NotNull
-    @Column(name="btitle", unique=true)
+    @Column(unique=true)
     private String btitle; //变量名不能有_
     private String bcontent;
 
@@ -28,8 +28,7 @@ public class Blog {
         this.bcontent = bcontent;
     }
 
-    public Blog() {
-    }
+    public Blog() { }
 
     public String getId() {
         return id;

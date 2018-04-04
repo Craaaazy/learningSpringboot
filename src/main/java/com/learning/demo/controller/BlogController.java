@@ -32,7 +32,7 @@ public class BlogController {
         return blogService.save(blog);
     }
 
-    @DeleteMapping(value = "/s/{title}")        //delete by title
+    @DeleteMapping(value = "/s/{title}")        //delete by title pathVariable是从url里拿值
     public void deleteBlog(@PathVariable String title){
         blogService.deleteByBtitle(title);
     }
@@ -43,7 +43,7 @@ public class BlogController {
     }
 
     @PutMapping(value = "/s")                   //update by title
-    public void putOneBlog(@RequestBody Map<String, String> map){
+    public void putOneBlog(@RequestBody Map<String, String> map){ // RequestBody 返回josn
         Blog blog = new Blog(map.get("title"), map.get("content"));
     }
 
