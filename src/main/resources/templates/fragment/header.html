@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultrag.net.nz/thymeleaf/layout" lang="en">
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{js/header.js}"></script>
+
+    <meta charset="UTF-8">
+</head>
+<body>
+
+<div th:fragment="default">
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <span class="navbar-brand" href="#">NING</span>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ml-4 active">
+                    <a class="nav-link" th:href="@{welcome}">Home</a>
+                </li>
+                <li class="nav-item ml-4">
+                    <a class="nav-link" th:href="@{myBlog}">Show</a>
+                </li>
+                <li class="nav-item ml-4">
+                    <a class="nav-link" th:href="@{addBlog}">Add</a>
+                </li>
+                <li class="nav-item ml-4">
+                    <form th:action="@{/logout}">
+                        <input style="border:none;background:none;cursor: pointer;" value="Logout" class="nav-link" type="submit"/>
+                    </form>
+                </li>
+                <li class="nav-item ml-4">
+                    <a class="nav-link" th:href="@{register}">Register</a>
+                </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+
+        </div>
+    </nav>
+
+</div>
+
+<div th:fragment="public">
+
+</div>
+
+</body>
+</html>

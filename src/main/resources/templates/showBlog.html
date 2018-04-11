@@ -24,13 +24,14 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
 
-    <script type="text/javascript" th:src="@{/js/showBlog.js}"></script>
 
 </head>
 <body>
 <center>
-    <p id="blog-title"></p>
-    <p id="blog-content"></p>
+
+    <p th:text="${blog.btitle}"></p>
+    <p th:text="${blog.bcontent}"></p>
+
 </center>
 
 

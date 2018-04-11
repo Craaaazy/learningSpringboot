@@ -1,13 +1,9 @@
 package com.learning.demo.model;
 
-
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.validator.constraints.UniqueElements;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -20,12 +16,18 @@ public class Blog {
 
     @NotNull
     @Column(unique=true)
-    private String btitle; //变量名不能有_
+    private String btitle;      //变量名不能有_
     private String bcontent;
 
-    public Blog(@NotNull String btitle, String bcontent) {
+    @ManyToOne
+    @JoinColumn(name = "blog_id")
+    private User user;
+
+
+    public Blog(@NotNull String btitle, String bcontent, User user) {
         this.btitle = btitle;
         this.bcontent = bcontent;
+        this.user = user;
     }
 
     public Blog() { }
@@ -52,5 +54,13 @@ public class Blog {
 
     public void setBcontent(String bcontent) {
         this.bcontent = bcontent;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

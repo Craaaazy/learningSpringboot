@@ -15,9 +15,8 @@ $(function () {
             data:JSON.stringify(data),
 
             success:function (data) {
-                console.log(data);
-            },error:function (data) {
-                console.log(data);
+                alert("添加成功");
+                window.location.reload();
             }
 
         });
@@ -79,15 +78,18 @@ function deleteBlog(_this) {
     $.ajax({
         url: '/blog/s/' + title,
         type: 'DELETE',
+
+        success:function () {
+            window.location.reload();
+        }
     })
 }
 
-
 function showDetail(_this) {  //转跳详细页 不会实现 暂时放着
     var title = $(_this).parent().siblings().eq(1).text();
+    window.location.href="/showBlog/"+title;
 
 }
-
 
 function putBlog(_this) {  //更新 暂时不会
 

@@ -34,6 +34,9 @@ public class User{
     @JoinColumn(name = "role_id")
     private Role role;
 
+    @OneToMany(mappedBy = "user")
+    private List<Blog> blogs;
+
     public String getId() {
         return id;
     }
@@ -73,5 +76,13 @@ public class User{
 
     public void setEnable(Boolean enable) {
         this.enable = enable;
+    }
+
+    public List<Blog> getBlogs() {
+        return blogs;
+    }
+
+    public void setBlogs(List<Blog> blogs) {
+        this.blogs = blogs;
     }
 }

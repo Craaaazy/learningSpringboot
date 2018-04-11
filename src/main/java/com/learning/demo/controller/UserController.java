@@ -1,8 +1,10 @@
 package com.learning.demo.controller;
 
+import com.learning.demo.Service.BlogService;
 import com.learning.demo.Service.NewsService;
 import com.learning.demo.Service.RoleService;
 import com.learning.demo.Service.UserService;
+import com.learning.demo.model.Blog;
 import com.learning.demo.model.News;
 import com.learning.demo.model.Role;
 import com.learning.demo.model.User;
@@ -12,6 +14,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.Map;
 
 @Controller
@@ -23,6 +26,9 @@ public class UserController {
     NewsService newsService;
     @Autowired
     RoleService roleService;
+    @Autowired
+    BlogService blogService;
+
 
     Role role = null;
     User user = null;
@@ -51,16 +57,19 @@ public class UserController {
         return "login";
     }
 
-    @GetMapping(value = "/")
-    public String wel(){
-        return "welcome";
-    }
+    @GetMapping(value = "/user/profile")   //保存在principal里
+    public String user_profile(Principal principal){
+        String username = principal.getName();
 
-    @GetMapping(value = "/user/profile")   //不知道springsecurity里登录的信息保存在什么里面
-    public String user_profile(){
+        System.out.println(username);
+        User user = new User();
+        user.setUsername(username);
+
         ModelMap modelMap = new ModelMap();
+        modelMap.addAttribute("username", user);
 
         return "user_profile";
+
     }
 
 
@@ -80,14 +89,35 @@ public class UserController {
         return news;
     }
 
-    @GetMapping(value = "/myBlog")
-    public String byBlog(){
-        return "myBlog";
-    }
+    @GetMapping(value = "/showBlog/{title}")
+    public String blogDetail(@PathVariable String title, ModelMap modelMap){
 
-    @GetMapping(value = "/showBlog")
-    public String showBlog(){
+        Blog blog = blogService.findBlogByBtitle(title);
+        modelMap.addAttribute("blog", blog);
+
         return "showBlog";
     }
 
+    @GetMapping(value = "/addBlog")
+    public String addBlog(){
+        return "addBlog";
+    }
+
+
+    @GetMapping(value = "/")
+    public String toIndex(){
+        return "index";
+    }
+
+
+    @GetMapping(value = "/welcome")
+    public String welcome(){
+        return "welcome";
+    }
+
+
+    @GetMapping(value = "/myBlog")
+    public String blogShow(){
+        return "myBlog";
+    }
 }
